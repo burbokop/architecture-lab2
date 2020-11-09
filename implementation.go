@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-// TODO: document this function.
-
 func StringToArray(inputS string) []string {
 	re := regexp.MustCompile(`([0-9]\.*[0-9]*)+|[+*^/-]`)
 	return re.FindAllString(inputS, -1)
@@ -34,9 +32,9 @@ func PostfixToPrefix(inputStr string) (string, error) {
 	}
 
 	if operandCounter-1 > operatorCounter {
-		return "", fmt.Errorf("too many operands")
+		return "", fmt.Errorf("error: too many operands")
 	} else if operandCounter-1 < operatorCounter {
-		return "", fmt.Errorf("too many operators")
+		return "", fmt.Errorf("error: too many operators")
 	}
 
 	stack := make([][]string, 0)
